@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience | Praveen Kumar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-effects.css">
+  <style>
+    :root {
+      --primary: #b57edc;
+      --dark: #0e0e0e;
+      --light: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--dark);
+      color: var(--light);
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      color: var(--light);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .container {
+      padding: 120px 10% 60px;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    h2.section-title {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: var(--primary);
+      animation: pulse 2s ease infinite alternate;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 25px 30px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 20px rgba(181, 126, 220, 0.1);
+      transition: all 0.4s ease;
+      transform: scale(1);
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 30px rgba(181, 126, 220, 0.3);
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      color: #ddd;
+    }
+
+    .card ul li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #121212;
+      color: #aaa;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      from {
+        opacity: 0.8;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        width: max-content;
+        z-index: 999;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="progressBar"></div>
+  <header>
+    <h1>Experience</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="education.html">Education</a>
+      <a href="projects.html">Projects</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2 class="section-title">Work Experience</h2>
+
+    <div class="card">
+      <h3><a href="https://www.pearlorganisation.com/" target="_blank" style="color:var(--primary); text-decoration: none;">Pearl Organisation</a> – Business Development Executive</h3>
+      <p>Jan 2024 – Jun 2024 | Dehradun, India</p>
+      <ul>
+        <li>Strategically identified and engaged new B2B and B2C prospects through cold calling, LinkedIn outreach, and automated email campaigns.</li>
+        <li>Developed personalized solution presentations based on client needs in IT services, software development, and digital transformation.</li>
+        <li>Collaborated with cross-functional technical teams to create detailed project roadmaps and customer proposals.</li>
+        <li>Monitored analytics tools and CRM to optimize conversion funnels, achieving 30%+ improvement in lead-to-deal ratio.</li>
+        <li>Represented Pearl Organisation at regional startup meetups and digital forums to enhance the company’s visibility and reputation.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Family Retail Business – Business Associate</h3>
+      <p>Jul 2024 – Present | Raxaul, Bihar</p>
+      <ul>
+        <li>Managed point-of-sale operations, product inventory, and vendor relations for the family’s daily retail store.</li>
+        <li>Initiated digital transformation by introducing barcode billing, inventory tracking, and basic CRM systems.</li>
+        <li>Developed promotional campaigns (offline + social media) to boost footfall and improve customer loyalty.</li>
+        <li>Strengthened customer relations with daily interaction and customized service, increasing word-of-mouth sales.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Praveen Kumar. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <a href="#" class="back-to-top">↑</a>
+  <script src="script-effects.js"></script>
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-menu");
+      nav.classList.toggle("show");
+    }
+  </script>
+</body>
+
+</html>

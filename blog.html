@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Praveen Kumar | Blog</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-effects.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    :root {
+      --primary: #b57edc;
+      --dark: #0e0e0e;
+      --light: #ffffff;
+      --glass: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      overflow-x: hidden;
+    }
+
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--dark);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .loader {
+      border: 6px solid #444;
+      border-top: 6px solid var(--primary);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .background-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.03);
+      animation: move 20s linear infinite;
+    }
+
+    @keyframes move {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--primary);
+      width: 0%;
+      z-index: 10000;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      color: var(--light);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .blog-section {
+      padding: 100px 20px 50px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .blog-post {
+      background: var(--glass);
+      padding: 25px;
+      margin-bottom: 25px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .blog-post h2 {
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .blog-post p {
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    .blog-post a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #121212;
+      padding: 30px;
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 10000;
+      mix-blend-mode: difference;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        width: max-content;
+        z-index: 999;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+  <div class="progress-bar" id="progress-bar"></div>
+  <div class="cursor" id="cursor"></div>
+
+  <div class="background-animation">
+    <div class="circle" style="width: 100px; height: 100px; left: 10%; top: 90%;"></div>
+    <div class="circle" style="width: 60px; height: 60px; left: 50%; top: 95%;"></div>
+    <div class="circle" style="width: 80px; height: 80px; left: 80%; top: 92%;"></div>
+  </div>
+
+  <header>
+    <h1>Praveen Kumar</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="education.html">Education</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="blog-section">
+    <div class="blog-post" data-aos="fade-up">
+      <h2>The Rise of AI in Business Development</h2>
+      <p>Artificial Intelligence is no longer a buzzword; it's a transformative force in business development. From predictive analytics to personalized customer engagement, AI is reshaping how we approach sales and marketing. In this post, I'll explore some of the most exciting AI applications that are helping businesses grow.</p>
+      <a href="#">Read More</a>
+    </div>
+    <div class="blog-post" data-aos="fade-up" data-aos-delay="200">
+      <h2>Mastering CRM for a Customer-Centric Approach</h2>
+      <p>A robust Customer Relationship Management (CRM) system is the backbone of any successful business. It's not just about storing contact information; it's about understanding your customers and building lasting relationships. This article delves into advanced CRM strategies that can help you create a truly customer-centric organization.</p>
+      <a href="#">Read More</a>
+    </div>
+    <div class="blog-post" data-aos="fade-up" data-aos-delay="400">
+      <h2>The Art of Digital Marketing: Beyond the Hype</h2>
+      <p>Digital marketing is a constantly evolving landscape. What worked yesterday might not work today. In this post, I'll share my insights on how to create a sustainable digital marketing strategy that focuses on long-term growth and brand building, rather than chasing short-lived trends.</p>
+      <a href="#">Read More</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Praveen Kumar. All Rights Reserved.</p>
+  </footer>
+
+  <a href="#" class="back-to-top">↑</a>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script>
+    window.addEventListener('load', () => {
+      document.getElementById('preloader').style.display = 'none';
+    });
+
+    const progressBar = document.getElementById('progress-bar');
+    window.onscroll = () => {
+      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      let scrolled = (winScroll / height) * 100;
+      progressBar.style.width = scrolled + "%";
+    };
+
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", e => {
+      cursor.style.left = e.pageX + "px";
+      cursor.style.top = e.pageY + "px";
+    });
+
+    function toggleMenu() {
+      const nav = document.getElementById("nav-menu");
+      nav.classList.toggle("show");
+    }
+  </script>
+  <script src="script-effects.js"></script>
+</body>
+
+</html>

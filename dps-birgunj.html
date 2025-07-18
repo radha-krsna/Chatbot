@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DPS Birgunj | Praveen Kumar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style-effects.css">
+  <style>
+    :root {
+      --primary: #b57edc;
+      --dark: #0e0e0e;
+      --light: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--dark);
+      color: var(--light);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      color: var(--light);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .container {
+      padding: 120px 10% 60px;
+    }
+
+    h2.section-title {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .content p,
+    .content ul {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    .content ul {
+      margin-left: 20px;
+    }
+
+    .location {
+      margin: 40px 0;
+    }
+
+    .location h3 {
+      font-size: 20px;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #121212;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        width: max-content;
+        z-index: 999;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="progressBar"></div>
+  <header>
+    <h1>DPS Birgunj</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="education.html">Back to Education</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2 class="section-title">About Delhi Public School, Birgunj</h2>
+    <div class="content">
+      <p><strong>Delhi Public School, Birgunj</strong> is one of the premier educational institutions in Nepal affiliated with the globally recognized Delhi Public School Society of India. DPS Birgunj stands as a symbol of academic excellence, holistic development, and international standard learning within the Terai region of Nepal.</p>
+
+      <p>The school offers quality education from pre-primary to senior secondary levels, nurturing students through a curriculum designed to develop intellectual, physical, emotional, and social capabilities. With state-of-the-art facilities and a student-centric approach, DPS Birgunj ensures that students get the best blend of academics and co-curricular exposure.</p>
+
+      <p>The school follows the CBSE curriculum and prepares students for national and international benchmarks. It maintains high teaching standards with experienced faculty, smart classrooms, science and computer labs, a well-stocked library, and a focus on moral and ethical education.</p>
+
+      <p>Notable Features:</p>
+      <ul>
+        <li>Affiliated with DPS Society, India</li>
+        <li>CBSE curriculum with NEB-recognized programs</li>
+        <li>Focus on creativity, leadership, and global citizenship</li>
+        <li>Modern campus infrastructure and disciplined environment</li>
+        <li>Participation in inter-DPS and national Olympiads</li>
+      </ul>
+
+      <p>DPS Birgunj is dedicated to creating responsible future leaders with strong academic foundations and ethical values.</p>
+    </div>
+
+    <div class="location">
+      <h3><i class="fas fa-map-marker-alt"></i> DPS Birgunj Location</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.905433019334!2d84.8867091753145!3d27.00666077659405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3993553c5ac5f6cf%3A0x14927c2a2b0486c1!2sDelhi%20Public%20School%2C%20Birgunj!5e0!3m2!1sen!2sin!4v1721050314563!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Praveen Kumar. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="script-effects.js"></script>
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-menu");
+      nav.classList.toggle("show");
+    }
+  </script>
+  <a href="#" class="back-to-top">↑</a>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patwa Academy | Praveen Kumar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style-effects.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #b57edc;
+      --dark: #0e0e0e;
+      --light: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--dark);
+      color: var(--light);
+    }
+
+    #progressBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--primary);
+      width: 0%;
+      z-index: 9999;
+    }
+
+    header {
+      padding: 20px 60px;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      color: var(--primary);
+    }
+
+    nav a {
+      color: var(--light);
+      margin-left: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .container {
+      padding: 120px 10% 60px;
+    }
+
+    h2.section-title {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .content p, .content ul {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    .content ul {
+      margin-left: 20px;
+    }
+
+    .location {
+      margin: 40px 0;
+    }
+
+    .location h3 {
+      font-size: 20px;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #121212;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="progressBar"></div>
+  <header>
+    <h1>Patwa Academy</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="education.html">Back to Education</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2 class="section-title">About Patwa Academy for Education, Neemuch</h2>
+    <div class="content">
+      <p><strong>Patwa Academy for Education</strong> is a reputed academic institution located in Neemuch, Madhya Pradesh. Affiliated with the ISBA Group, it is known for providing foundational education from nursery to 10th standard with an emphasis on discipline, academic excellence, and moral values.</p>
+
+      <p>The institution promotes holistic development through academic rigor, co-curricular activities, and early leadership training. With well-trained faculty, a secure campus, and a modern approach to education, Patwa Academy continues to shape the minds of young students in the region.</p>
+
+      <p>Key Highlights:</p>
+      <ul>
+        <li>Part of the ISBA Group of Institutions</li>
+        <li>Strong emphasis on discipline and value-based education</li>
+        <li>Modern classrooms, smart learning tools, and regular academic monitoring</li>
+        <li>Engagement in Olympiads, competitions, and life-skills training</li>
+        <li>Excellent results in regional academic performance benchmarks</li>
+      </ul>
+    </div>
+
+    <div class="location">
+      <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.7908583095854!2d74.8649447750492!3d24.076997278423203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39662e998ac3266b%3A0xb90fc69b28d0b17f!2sPatwa%20Academy%20for%20Education!5e0!3m2!1sen!2sin!4v1721052511565!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Praveen Kumar. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script-effects.js"></script>
+  <a href="#" class="back-to-top">↑</a>
+  <script>
+    document.getElementById("year").innerText = new Date().getFullYear();
+  </script>
+</body>
+
+</html>

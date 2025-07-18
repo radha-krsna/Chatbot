@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Praveen Kumar</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-effects.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    :root {
+      --primary: #b57edc;
+      --dark: #0e0e0e;
+      --light: #ffffff;
+      --glass: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      overflow-x: hidden;
+    }
+
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--primary);
+      width: 0%;
+      z-index: 10000;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      color: var(--light);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .container {
+      padding: 100px 20px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--glass);
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+
+    footer {
+      background: #121212;
+      padding: 30px;
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: var(--primary);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+
+    .timeline-container {
+      padding: 10px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+    }
+
+    .timeline-container.left {
+      left: 0;
+    }
+
+    .timeline-container.right {
+      left: 50%;
+    }
+
+    .timeline-container::after {
+      content: '\f0b1';
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -17px;
+      background-color: white;
+      border: 4px solid var(--primary);
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+      text-align: center;
+      line-height: 25px;
+      font-size: 15px;
+      color: var(--primary);
+    }
+
+    .timeline-container.right::after {
+      left: -16px;
+    }
+
+    .content {
+      padding: 20px 30px;
+      background-color: var(--glass);
+      position: relative;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        width: max-content;
+        z-index: 999;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+
+      .timeline::after {
+        left: 31px;
+      }
+
+      .timeline-container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .timeline-container::before {
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+      }
+
+      .timeline-container.left::after,
+      .timeline-container.right::after {
+        left: 15px;
+      }
+
+      .timeline-container.right {
+        left: 0%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <header>
+    <h1>Praveen Kumar</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="education.html">Education</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="card" data-aos="fade-up">
+      <h2>About Me</h2>
+      <p>I am a passionate and driven professional with a background in business development and a strong interest in technology, especially AI. I am currently pursuing an MBA to further enhance my business acumen and leadership skills. I am a quick learner, a team player, and I am always looking for new challenges and opportunities to grow.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-container left" data-aos="fade-right">
+        <div class="content">
+          <h2>2024 - Present</h2>
+          <p>MBA in Logistics & Supply Chain Management, Sharda University</p>
+        </div>
+      </div>
+      <div class="timeline-container right" data-aos="fade-left">
+        <div class="content">
+          <h2>Jan 2024 - Jun 2024</h2>
+          <p>Business Development Executive, Pearl Organisation</p>
+        </div>
+      </div>
+      <div class="timeline-container left" data-aos="fade-right">
+        <div class="content">
+          <h2>2021 - 2024</h2>
+          <p>BBA, Jigyasa University</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-aos="fade-up">
+      <h2>Skills</h2>
+      <ul>
+        <li>Business Development</li>
+        <li>CRM Management</li>
+        <li>Digital Marketing</li>
+        <li>AI & Machine Learning</li>
+        <li>Project Management</li>
+        <li>Data Analysis</li>
+      </ul>
+    </div>
+
+    <div class="card" data-aos="fade-up">
+      <h2>Interests</h2>
+      <p>Outside of work and academics, I enjoy exploring new technologies, reading about AI and its impact on society, and participating in hackathons. I am also an avid traveler and enjoy experiencing new cultures.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Praveen Kumar. All Rights Reserved.</p>
+  </footer>
+
+  <a href="#" class="back-to-top">↑</a>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script src="script-effects.js"></script>
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-menu");
+      nav.classList.toggle("show");
+    }
+  </script>
+</body>
+
+</html>

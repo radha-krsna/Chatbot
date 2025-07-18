@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jigyasa University | Praveen Kumar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style-effects.css">
+  <style>
+    :root {
+      --primary: #b57edc;
+      --dark: #0e0e0e;
+      --light: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--dark);
+      color: var(--light);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      color: var(--light);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .container {
+      padding: 120px 10% 60px;
+    }
+
+    h2.section-title {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .content p,
+    .content ul {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    .content ul {
+      margin-left: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .location {
+      margin-top: 30px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #121212;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        width: max-content;
+        z-index: 999;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="progressBar"></div>
+  <header>
+    <h1>Jigyasa University</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="education.html">Back to Education</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2 class="section-title">About Jigyasa University</h2>
+    <div class="content">
+      <p><strong>Jigyasa University</strong>, located in Dehradun, Uttarakhand, is a modern private university recognized for its innovation in education, dynamic academic environment, and commitment to nurturing leadership in every student.</p>
+
+      <p>The university offers a range of undergraduate and postgraduate courses including BBA, MBA, BCA, and various science and arts programs. Jigyasa stands out for integrating practical experience with academic learning, promoting research, and encouraging entrepreneurship among students.</p>
+
+      <ul>
+        <li>Focus on experiential and project-based learning</li>
+        <li>Modern campus with research centers and tech-enabled classrooms</li>
+        <li>Internship-driven curriculum with strong industry tie-ups</li>
+        <li>Vibrant student community and active placement cell</li>
+        <li>NAAC-accredited programs with UGC recognition</li>
+      </ul>
+
+      <p>Jigyasa University’s motto is to turn curiosity into capability, fostering innovation and confidence in students from across India.</p>
+    </div>
+
+    <div class="location">
+      <h3><i class="fas fa-map-marker-alt"></i> Jigyasa University Location</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.6647175668486!2d78.02683457539352!3d30.29077360591688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39092a4cfa1bde6d%3A0xd55e225f5392dc72!2sJigyasa%20University!5e0!3m2!1sen!2sin!4v1721050855435!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Praveen Kumar. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="script-effects.js"></script>
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-menu");
+      nav.classList.toggle("show");
+    }
+  </script>
+  <a href="#" class="back-to-top">↑</a>
+</body>
+
+</html>

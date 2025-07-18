@@ -1,0 +1,88 @@
+/* Floating Card */
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(181, 126, 220, 0.4);
+}
+
+/* Gradient Heading */
+h2,
+h3 {
+  background: linear-gradient(to right, #b57edc, #d1a5f4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Neon Glow Button */
+.button {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 12px 24px;
+  border-radius: 30px;
+  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: var(--primary);
+  z-index: -1;
+  transition: 0.4s ease;
+}
+.button:hover::before {
+  left: 0;
+}
+.button:hover {
+  color: #000;
+}
+
+/* Page Transitions */
+body.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Hero Scroll Animation */
+.hero.scrolled {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--primary);
+  color: #000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
