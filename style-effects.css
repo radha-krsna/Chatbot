@@ -86,3 +86,121 @@ body.fade-out {
   opacity: 1;
   visibility: visible;
 }
+
+/* Chatbot */
+#chatbot-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--primary);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#chatbot-window {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 370px;
+  height: 550px;
+  background-color: var(--glass);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+  box-shadow: 0 8px 32px 0 rgba(181, 126, 220, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#chatbot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: linear-gradient(90deg, #2c2c44, #1a1a2e);
+  border-bottom: 1px solid var(--primary);
+}
+
+#chatbot-header h2 {
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+#chatbot-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#chatbot-messages {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#chatbot-input-container {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid var(--primary);
+}
+
+#chatbot-input {
+  flex-grow: 1;
+  border: none;
+  padding: 12px;
+  border-radius: 20px;
+  margin-right: 10px;
+  background-color: #2a2a3a;
+  color: white;
+}
+
+#chatbot-input::placeholder {
+  color: #9ca3af;
+}
+
+#chatbot-send {
+  border: none;
+  background-color: var(--primary);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.message {
+  max-width: 75%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.message.user {
+  background: linear-gradient(90deg, #6b21a8, #a78bfa);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 0;
+}
+
+.message.bot {
+  background: #2a2a3a;
+  color: #d8b4fe;
+  align-self: flex-start;
+  border-bottom-left-radius: 0;
+  border: 1px solid #8b5cf6;
+}

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Praveen Kumar | Portfolio</title>
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style-effects.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
@@ -262,16 +263,16 @@
   <div class="cursor" id="cursor"></div>
 
   <!-- Subtle Background Animation -->
-  <div class="background-animation">
+  <div class="background-animation" aria-hidden="true">
     <div class="circle" style="width: 100px; height: 100px; left: 10%; top: 90%;"></div>
     <div class="circle" style="width: 60px; height: 60px; left: 50%; top: 95%;"></div>
     <div class="circle" style="width: 80px; height: 80px; left: 80%; top: 92%;"></div>
   </div>
 
-  <header>
+  <header role="banner">
     <h1>Praveen Kumar</h1>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <nav id="nav-menu">
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰</button>
+    <nav id="nav-menu" role="navigation">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="education.html">Education</a>
@@ -283,7 +284,8 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <main role="main">
+    <section class="hero">
     <div id="particles-js"></div>
     <h2>Hello, I'm Praveen</h2>
     <h2 class="typing"></h2>
@@ -292,9 +294,10 @@
     <a href="https://in.linkedin.com/in/praveen-kumar-b8b7a02a0" target="_blank" class="button">Visit My LinkedIn</a>
     <a href="Praveen_Kumar_Resume.pdf" download class="button">📄 Download Resume</a>
   </section>
+  </main>
 
-  <footer>
-    <p>&copy; 2025 Praveen Kumar. All Rights Reserved.</p>
+  <footer role="contentinfo">
+    <p>&copy; <span id="year"></span> Praveen Kumar. All Rights Reserved.</p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -304,29 +307,35 @@
       document.getElementById('preloader').style.display = 'none';
     });
 
-    const progressBar = document.getElementById('progress-bar');
-    window.onscroll = () => {
-      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      let scrolled = (winScroll / height) * 100;
-      progressBar.style.width = scrolled + "%";
-    };
-
     const cursor = document.getElementById("cursor");
     document.addEventListener("mousemove", e => {
       cursor.style.left = e.pageX + "px";
       cursor.style.top = e.pageY + "px";
     });
-
-    function toggleMenu() {
-      const nav = document.getElementById("nav-menu");
-      nav.classList.toggle("show");
-    }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="script-effects.js"></script>
   <a href="#" class="back-to-top">↑</a>
+
+  <!-- Chatbot -->
+  <div id="chatbot-container">
+    <div id="chatbot-fab" onclick="toggleChatbot()">
+      <i class="fas fa-robot"></i>
+    </div>
+    <div id="chatbot-window">
+      <div id="chatbot-header">
+        <h2>Chatbot</h2>
+        <button onclick="toggleChatbot()">X</button>
+      </div>
+      <div id="chatbot-messages"></div>
+      <div id="chatbot-input-container">
+        <input type="text" id="chatbot-input" placeholder="Type your message...">
+        <button id="chatbot-send">Send</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     particlesJS.load('particles-js', 'particles.json', function() {
       console.log('callback - particles.js config loaded');
