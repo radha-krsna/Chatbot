@@ -1,10 +1,37 @@
+// Preloader
+window.addEventListener('load', () => {
+  document.getElementById('preloader').style.display = 'none';
+});
+
+// AOS initialization
+AOS.init();
+
 // Scroll Progress Bar
+const progressBar = document.getElementById('progress-bar');
 window.onscroll = () => {
-  let scroll = document.documentElement.scrollTop;
+  let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  let progress = (scroll / height) * 100;
-  document.getElementById('progressBar').style.width = progress + '%';
+  let scrolled = (winScroll / height) * 100;
+  progressBar.style.width = scrolled + "%";
 };
+
+// Custom Cursor
+const cursor = document.getElementById("cursor");
+document.addEventListener("mousemove", e => {
+  cursor.style.left = e.pageX + "px";
+  cursor.style.top = e.pageY + "px";
+});
+
+// Toggle Menu
+function toggleMenu() {
+  const nav = document.getElementById("nav-menu");
+  nav.classList.toggle("show");
+}
+
+// Particles JS
+particlesJS.load('particles-js', 'particles.json', function() {
+  console.log('callback - particles.js config loaded');
+});
 
 // Auto Footer Year
 document.addEventListener("DOMContentLoaded", () => {
@@ -44,14 +71,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Hero Scroll Animation
+// Hero Scroll Animation & Header Shadow
 window.addEventListener('scroll', () => {
   const hero = document.querySelector('.hero');
+  const header = document.querySelector('header');
   if (hero) {
     if (window.scrollY > 100) {
       hero.classList.add('scrolled');
     } else {
       hero.classList.remove('scrolled');
+    }
+  }
+  if (header) {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
     }
   }
 });
@@ -74,3 +109,86 @@ backToTopButton.addEventListener("click", (e) => {
     behavior: "smooth",
   });
 });
+
+// Chatbot
+const chatbotContainer = document.getElementById('chatbot-container');
+const chatMessages = document.getElementById('chat-messages');
+const userInput = document.getElementById('user-input');
+const sendBtn = document.getElementById('send-btn');
+const typingIndicator = document.getElementById('typing-indicator');
+
+// --- IMPORTANT ---
+// THE API KEY SHOULD BE STORED SECURELY ON A BACKEND SERVER.
+// This is just a placeholder.
+const API_KEY = 'YOUR_API_KEY';
+const API_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
+
+function toggleChatbot() {
+  chatbotContainer.classList.toggle('show');
+}
+
+function addUserMessage(message) {
+  const messageElement = document.createElement('div');
+  messageElement.classList.add('message', 'user');
+  messageElement.innerText = message;
+  chatMessages.appendChild(messageElement);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function addBotMessage(message) {
+  const messageElement = document.createElement('div');
+  messageElement.classList.add('message', 'bot');
+  messageElement.innerText = message;
+  chatMessages.appendChild(messageElement);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function setTyping(isTyping) {
+    typingIndicator.style.display = isTyping ? 'flex' : 'none';
+}
+
+async function sendMessage() {
+  const message = userInput.value.trim();
+  if (message === '') return;
+
+  userInput.value = '';
+  addUserMessage(message);
+  setTyping(true);
+
+  try {
+    const response = await fetch(API_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'openai/gpt-3.5-turbo',
+        messages: [{ role: 'user', content: message }],
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`API error: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    const botMessage = data.choices[0].message.content;
+    addBotMessage(botMessage);
+
+  } catch (error) {
+    console.error('Chatbot error:', error);
+    addBotMessage('Sorry, I am having trouble connecting. Please try again later.');
+  } finally {
+    setTyping(false);
+  }
+}
+
+sendBtn.addEventListener('click', sendMessage);
+userInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    sendMessage();
+  }
+});
+
+addBotMessage("Hello! I'm Krsna's Flute - your AI assistant. How can I help you today?");

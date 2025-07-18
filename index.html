@@ -9,249 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style-effects.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-  <style>
-    :root {
-      --primary: #b57edc;
-      --dark: #0e0e0e;
-      --light: #ffffff;
-      --glass: rgba(255, 255, 255, 0.08);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background-color: var(--dark);
-      color: var(--light);
-      overflow-x: hidden;
-    }
-
-    #preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: var(--dark);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    .loader {
-      border: 6px solid #444;
-      border-top: 6px solid var(--primary);
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .background-animation {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .circle {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.03);
-      animation: move 20s linear infinite;
-    }
-
-    @keyframes move {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) scale(1.5);
-        opacity: 0;
-      }
-    }
-
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 4px;
-      background: var(--primary);
-      width: 0%;
-      z-index: 10000;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      color: var(--primary);
-      font-size: 1.5rem;
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 28px;
-      color: var(--light);
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      color: var(--light);
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: var(--primary);
-      transition: width 0.3s;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      height: 100vh;
-      padding: 20px;
-      background: linear-gradient(135deg, #1c1c1c, #2e003e);
-      color: #fff;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero h2 {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 20px;
-      animation: fadeInDown 1s ease;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      margin-bottom: 40px;
-      padding: 0 15px;
-      animation: fadeInUp 1.2s ease;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      background: var(--primary);
-      color: #000;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: transform 0.3s ease;
-      margin: 10px;
-      font-size: 0.9rem;
-    }
-
-    .button:hover {
-      transform: scale(1.05);
-    }
-
-    footer {
-      background: #121212;
-      padding: 30px;
-      text-align: center;
-      font-size: 14px;
-      color: #aaa;
-    }
-
-    .cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--primary);
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 10000;
-      mix-blend-mode: difference;
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-
-      nav {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background: rgba(0, 0, 0, 0.95);
-        padding: 10px 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        width: max-content;
-        z-index: 999;
-      }
-
-      nav.show {
-        display: flex;
-      }
-
-      nav a {
-        margin: 10px 0;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -297,41 +54,33 @@
     <p>&copy; 2025 Praveen Kumar. All Rights Reserved.</p>
   </footer>
 
+  <div class="chatbot-container" id="chatbot-container">
+    <div class="chat-header">
+      <h2>Krsna's Flute</h2>
+      <button class="close-chatbot" onclick="toggleChatbot()">X</button>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="typing-indicator" id="typing-indicator">
+      <span>Krishna's Flute is typing</span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Ask me anything...">
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+
+  <button class="chatbot-toggle" onclick="toggleChatbot()">
+    <img src="https://cdn-icons-png.flaticon.com/512/1256/1256313.png" alt="Chatbot">
+  </button>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
-  <script>
-    window.addEventListener('load', () => {
-      document.getElementById('preloader').style.display = 'none';
-    });
-
-    const progressBar = document.getElementById('progress-bar');
-    window.onscroll = () => {
-      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      let scrolled = (winScroll / height) * 100;
-      progressBar.style.width = scrolled + "%";
-    };
-
-    const cursor = document.getElementById("cursor");
-    document.addEventListener("mousemove", e => {
-      cursor.style.left = e.pageX + "px";
-      cursor.style.top = e.pageY + "px";
-    });
-
-    function toggleMenu() {
-      const nav = document.getElementById("nav-menu");
-      nav.classList.toggle("show");
-    }
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="script-effects.js"></script>
   <a href="#" class="back-to-top">↑</a>
-  <script>
-    particlesJS.load('particles-js', 'particles.json', function() {
-      console.log('callback - particles.js config loaded');
-    });
-  </script>
 </body>
 
 </html>
