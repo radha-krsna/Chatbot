@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Praveen Kumar | Chatbot</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-effects.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="chatbot.css">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+</head>
+
+<body>
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+  <div class="progress-bar" id="progress-bar"></div>
+  <div class="cursor" id="cursor"></div>
+
+  <!-- Subtle Background Animation -->
+  <div class="background-animation">
+    <div class="circle" style="width: 100px; height: 100px; left: 10%; top: 90%;"></div>
+    <div class="circle" style="width: 60px; height: 60px; left: 50%; top: 95%;"></div>
+    <div class="circle" style="width: 80px; height: 80px; left: 80%; top: 92%;"></div>
+  </div>
+
+  <header>
+    <h1>Praveen Kumar</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="education.html">Education</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="chatbot.html">Chatbot</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <main class="chat-container" role="main" aria-label="Krishna's Flute Chat">
+      <header class="chat-header">
+        <i class="fas fa-music" aria-hidden="true"></i>
+        <h1>Krsna's Flute</h1>
+      </header>
+
+      <section id="chatMessages" aria-live="polite" aria-relevant="additions" tabindex="0"></section>
+
+      <div id="typingIndicator" class="typing-indicator" aria-hidden="true" style="display:none;">
+        <span>Krishna's Flute is typing</span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+
+      <form id="inputForm" class="input-area" aria-label="Send message form">
+        <input
+          type="text"
+          id="userInput"
+          name="userInput"
+          placeholder="Play your query like Krishna's flute..."
+          autocomplete="off"
+          aria-required="true"
+          maxlength="2000"
+        />
+        <button type="button" id="voiceBtn" aria-label="Start voice input" title="Voice input">
+          <i class="fas fa-microphone"></i>
+        </button>
+        <button type="submit" id="sendBtn" aria-label="Send message" title="Send message">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </form>
+    </main>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Praveen Kumar. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script>
+    window.addEventListener('load', () => {
+      document.getElementById('preloader').style.display = 'none';
+    });
+
+    const progressBar = document.getElementById('progress-bar');
+    window.onscroll = () => {
+      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      let scrolled = (winScroll / height) * 100;
+      progressBar.style.width = scrolled + "%";
+    };
+
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", e => {
+      cursor.style.left = e.pageX + "px";
+      cursor.style.top = e.pageY + "px";
+    });
+
+    function toggleMenu() {
+      const nav = document.getElementById("nav-menu");
+      nav.classList.toggle("show");
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="script-effects.js"></script>
+  <a href="#" class="back-to-top">↑</a>
+  <script>
+    particlesJS.load('particles-js', 'particles.json', function() {
+      console.log('callback - particles.js config loaded');
+    });
+  </script>
+  <script src="chatbot.js"></script>
+</body>
+
+</html>
