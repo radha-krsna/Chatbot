@@ -179,9 +179,10 @@ body {
     box-shadow: none;
     transform: none;
   }
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .chat-container {
       height: 100vh;
+      width: 100vw;
       border-radius: 0;
     }
     .chat-header {
