@@ -121,6 +121,10 @@ body.fade-out {
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+#chatbot-window.show {
+  display: flex;
+}
+
 #chatbot-header {
   display: flex;
   justify-content: space-between;

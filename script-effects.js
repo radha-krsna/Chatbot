@@ -85,13 +85,8 @@ const chatbotWindow = document.getElementById("chatbot-window");
 const chatbotFab = document.getElementById("chatbot-fab");
 
 function toggleChatbot() {
-  if (chatbotWindow.style.display === "flex") {
-    chatbotWindow.style.display = "none";
-    chatbotFab.style.display = "flex";
-  } else {
-    chatbotWindow.style.display = "flex";
-    chatbotFab.style.display = "flex";
-  }
+  const chatbotWindow = document.getElementById("chatbot-window");
+  chatbotWindow.classList.toggle("show");
 }
 
 const chatbotMessages = document.getElementById("chatbot-messages");
