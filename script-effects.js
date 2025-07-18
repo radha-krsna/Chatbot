@@ -90,7 +90,7 @@ function toggleChatbot() {
     chatbotFab.style.display = "flex";
   } else {
     chatbotWindow.style.display = "flex";
-    chatbotFab.style.display = "none";
+    chatbotFab.style.display = "flex";
   }
 }
 
